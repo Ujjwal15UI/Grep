@@ -18,7 +18,10 @@
                     <archive>
                         <manifest>
                             <mainClass>grep.Grep</mainClass>
+                                 <mainClass>grep.Grep</mainClass>
+
                         </manifest>
+                             
                     </archive>
                 </configuration>
             </plugin>
