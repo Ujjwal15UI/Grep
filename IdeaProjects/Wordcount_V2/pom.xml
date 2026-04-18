@@ -16,7 +16,7 @@
                     <archive>
                         <manifest>
                             <mainClass>
-                                wordcount.WordCountJob
+                                grep.Grep
                             </mainClass>
                         </manifest>
                         <manifestFile>
