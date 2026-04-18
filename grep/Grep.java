@@ -33,7 +33,7 @@ public class Grep extends Configured implements Tool {
 			String [] words = StringUtils.split(value.toString(),'\\', ' ');
 			for(String word: words) {
 				//TODO: Use the method from String class which check the whether the word containd searchString
-				if(word._____(searchString)) {
+				if(word.contains(searchString)) {
 					outputValue.set(word);
 					context.write(outputValue, ONE);
 				}
@@ -43,7 +43,7 @@ public class Grep extends Configured implements Tool {
 		//TODO: Complete the setup method call, 
 		//TODO: Look at the API doc and tell how many times this method will be called
 		@Override
-		protected void setup(______) throws IOException,
+		protected void setup(Context context) throws IOException,
 				InterruptedException {
 			System.out.println("-----Inside setup()-----");
 			searchString = context.getConfiguration().get("searchString");
@@ -66,7 +66,7 @@ public class Grep extends Configured implements Tool {
 		FileOutputFormat.setOutputPath(job, out);
 		
 		//TODO
-		job.setMapperClass(_____);
+		job.setMapperClass(GrepMapper.class);
 		
 		// TODO
 		//Look at the API documentation for IntSumReducer class
@@ -80,9 +80,9 @@ public class Grep extends Configured implements Tool {
 		job.setMapOutputValueClass(IntWritable.class);
 		
 		//TODO
-		job.setOutputKeyClass(_____);
+		job.setOutputKeyClass(Text.class);
 		//TODO		
-		job.setOutputValueClass();
+		job.setOutputValueClass(IntWritable.class);
 		
 		return job.waitForCompletion(true)?0:1;
 
@@ -104,6 +104,9 @@ public class Grep extends Configured implements Tool {
 	}
 }
 
+//TODO
+// Run the application by giving following command
+// 1. yarn jar grep.jar constitution.txt grep_output the
 //TODO
 // Run the application by giving following command
 // 1. yarn jar grep.jar constitution.txt grep_output the
